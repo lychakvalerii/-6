@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="UTF-8"><title>Лаб 6 SVG, варіант 10</title>
+<style>body{font:16px Arial;margin:10px}svg,embed,object,iframe{border:1px solid #999;margin:4px}</style></head>
+<body>
+<h2>1. Статичний малюнок</h2>
+<svg width="500" height="380">
+  <desc>Варіант 10</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5 0 10z"/></marker>
+    <symbol id="man"><circle cx="25" cy="75" r="25"/><polygon points="25,100 0,150 50,150"/><rect width="50" height="50"/></symbol>
+    <g id="axes" stroke="#000">
+      <line x1="10" y1="230" x2="480" y2="230" marker-end="url(#a)"/>
+      <line x1="100" y1="360" x2="100" y2="15" marker-end="url(#a)"/>
+      <polyline fill="none" points="50,224 50,236 50,230 150,230 150,224 150,236 150,230 200,230 200,224 200,236 200,230 250,230 250,224 250,236 250,230 300,230 300,224 300,236 300,230 350,230 350,224 350,236 350,230 400,230 400,224 400,236"/>
+      <polyline fill="none" points="94,130 106,130 100,130 100,180 94,180 106,180 100,180 100,280 94,280 106,280 100,280 100,330 94,330 106,330"/>
+      <text x="86" y="248">0</text><text x="470" y="250">X</text><text x="110" y="25">Y</text>
+      <text x="153" y="250">1</text><text x="203" y="250">2</text><text x="253" y="250">3</text><text x="303" y="250">4</text><text x="353" y="250">5</text><text x="403" y="250">6</text>
+      <text x="80" y="135">2</text><text x="80" y="185">1</text><text x="80" y="285">-1</text><text x="80" y="335">-2</text>
+    </g>
+  </defs>
+  <use href="#axes"/>
+  <g fill="blue" stroke="#000">
+    <rect x="200" y="80" width="100" height="50"/>
+    <ellipse cx="250" cy="230" rx="50" ry="100"/>
+    <rect x="150" y="280" width="50" height="50"/><rect x="300" y="280" width="50" height="50"/>
+    <use href="#man" x="100" y="130"/><use href="#man" x="350" y="130"/>
+  </g>
+</svg>
+
+<h2>2. Текст п о кривій</h2>
+<svg width="700" height="200">
+  <path id="p" d="M20 140C140 20 260 20 350 110S560 200 680 80" fill="none" stroke="#ccc"/>
+  <text font-size="26" fill="navy"><textPath href="#p">Лабораторна робота №6 · SVG · Варіант 10</textPath></text>
+</svg>
+
+<h2>3. Анімація</h2>
+<svg width="500" height="380">
+  <use href="#axes"/>
+  <g fill="blue" stroke="#000">
+    <!-- обертається (центр 250 105) -->
+    <rect x="200" y="80" width="100" height="50"><animateTransform attributeName="transform" type="rotate" from="0 250 105" to="360 250 105" dur="4s" repeatCount="indefinite"/></rect>
+    <!-- змінює розмір (центр еліпса в 0,0) -->
+    <g transform="translate(250 230)"><ellipse rx="50" ry="100"><animateTransform attributeName="transform" type="scale" values="1;.6;1" dur="3s" repeatCount="indefinite"/></ellipse></g>
+    <!-- переміщаються -->
+    <rect x="150" y="280" width="50" height="50"><animateTransform attributeName="transform" type="translate" values="0 0;-60 0;0 0" dur="3s" repeatCount="indefinite"/></rect>
+    <rect x="300" y="280" width="50" height="50"><animateTransform attributeName="transform" type="translate" values="0 0;60 0;0 0" dur="3s" repeatCount="indefinite"/></rect>
+    <rect x="100" y="130" width="50" height="50"/><rect x="350" y="130" width="50" height="50"/>
+    <!-- змінюють колір -->
+    <circle cx="125" cy="205" r="25"><animate attributeName="fill" values="blue;red;blue" dur="3s" repeatCount="indefinite"/></circle>
+    <circle cx="375" cy="205" r="25"><animate attributeName="fill" values="blue;gold;blue" dur="3s" repeatCount="indefinite"/></circle>
+    <!-- перекручуються -->
+    <g transform="translate(125 255)"><polygon points="0,-25 -25,25 25,25"><animateTransform attributeName="transform" type="skewX" values="0;30;0" dur="3s" repeatCount="indefinite"/></polygon></g>
+    <g transform="translate(375 255)"><polygon points="0,-25 -25,25 25,25"><animateTransform attributeName="transform" type="skewX" values="0;-30;0" dur="3s" repeatCount="indefinite"/></polygon></g>
+  </g>
+</svg>
+
+<h2>4. embed / object / iframe</h2>
+<embed src="figure.svg" width="250" height="190">
+<object data="figure.svg" width="250" height="190"><param name="src" value="figure.svg"></object>
+<iframe src="figure.svg" width="250" height="190"></iframe>
+</body></html>
